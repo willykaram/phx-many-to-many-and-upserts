@@ -1,0 +1,26 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :title, class: "control-label" %>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error_tag f, :title %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :body, class: "control-label" %>
+    <%= textarea f, :body, class: "form-control" %>
+    <%= error_tag f, :body %>
+  </div>
+
+  <%= # multiple_select(f, :tags, @tags |> Enum.map(&{&1.name, &1.id})) %>
+  <%= #multiple_select(f, :tags, @tags_all |> Enum.map(&{&1.name, &1.id}), selected: Enum.map(@post.tags, &(&1.id)), class: "mdc-multi-select mdc-list") %>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

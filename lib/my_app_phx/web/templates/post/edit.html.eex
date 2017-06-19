@@ -1,0 +1,31 @@
+<h2>Edit Post</h2>
+
+
+<span><%= link "Back", to: post_path(@conn, :index) %></span>
+
+
+
+
+<%= form_for @changeset, post_path(@conn, :update, @post), fn f -> %>
+
+
+<div class="form-group">
+  <%= label f, :title, class: "control-label" %>
+  <%= text_input f, :title, class: "form-control" %>
+  <%= error_tag f, :title %>
+</div>
+
+<div class="form-group">
+  <%= label f, :body, class: "control-label" %>
+  <%= textarea f, :body, class: "form-control" %>
+  <%= error_tag f, :body %>
+</div>
+
+<%= # multiple_select(f, :tags, @tags |> Enum.map(&{&1.name, &1.id})) %>
+<%=  multiple_select(f, :tags, @tags_all |> Enum.map(&{&1.name, &1.id}), selected: Enum.map(@post.tags, &(&1.id)), class: "mdc-multi-select mdc-list") %>
+
+
+      <div class="form-group">
+        <%= submit "Submit", class: "mdc-button mdc-button--raised mdc-button--primary mdc-ripple-surface" %>
+      </div>
+    <% end %>
