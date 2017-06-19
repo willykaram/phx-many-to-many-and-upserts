@@ -1,5 +1,7 @@
 # MyAppPhx
 
+This example is intended to implement tthe app outlined in Platformatec's "Many to many and upserts" blog post](http://blog.plataformatec.com.br/2016/12/many-to-many-and-upserts/)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
